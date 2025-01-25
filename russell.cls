@@ -385,8 +385,8 @@
 \newcommand{\acvHeaderAfterQuoteSkip}{5mm}
 
 % Others
-\newcommand{\acvSectionTopSkip}{3mm}
-\newcommand{\acvSectionContentTopSkip}{2.5mm}
+\newcommand{\acvSectionTopSkip}{0.5mm}
+\newcommand{\acvSectionContentTopSkip}{1mm}
 
 
 %-------------------------------------------------------------------------------
@@ -610,7 +610,7 @@
   \paragraphstyle
 }{%
   \par
-  \vspace{2mm}
+  %\vspace{0mm}
 }
 
 % Define an environment for cventry
@@ -647,15 +647,10 @@
   \setlength\tabcolsep{0pt}
   \setlength{\extrarowheight}{0pt}
   \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 4.5cm} R{4.5cm}}
-    \setlength\leftskip{0.2cm}
-    \subentrytitlestyle{#2} & \ifthenelse{\equal{#1}{}}
-      {\subentrydatestyle{#3}}{}
-    \ifthenelse{\equal{#1}{}}
-      {}
-      {\subentrypositionstyle{#1} & \subentrydatestyle{#3} \\}
-    \ifthenelse{\equal{#4}{}}
-      {}
-      {\multicolumn{2}{L{17.0cm}}{\subdescriptionstyle{#4}} \\}
+    \ifempty{#2#3}
+      {\entrypositionstyle{#1} & \entrydatestyle{#4} \\}
+      {\entrytitlestyle{#2} & \entrylocationstyle{#3} \\
+      \entrypositionstyle{#1} & \entrydatestyle{#4} \\}
   \end{tabular*}
 }
 
@@ -712,7 +707,7 @@
 }{%
   \end{itemize}
   \end{justify}
-  \vspace{-4.0mm}
+ % \vspace{-4.0mm}
 }
 
 
